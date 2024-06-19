@@ -22,6 +22,16 @@ modules:
                           
 
 
+
+    - name: cross-container-service-2
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_2
+        service: ~{the-service-name}
+                          
+
+
 resources:
  - name: hdi_db
    properties:
@@ -31,6 +41,14 @@ resources:
  - name: cross-container-service-1
    parameters:
       service-name: XSC
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+
+
+ - name: cross-container-service-2
+   parameters:
+      service-name: XSA2
    properties:
       the-service-name: ${service-name}
    type: org.cloudfoundry.existing-service
